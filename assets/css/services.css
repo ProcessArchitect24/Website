@@ -1,6 +1,44 @@
 /* ==========================================================================
-   SERVICES & PRICING PAGE STYLES - Modal Version
+   SERVICES PAGE STYLES - Modal Version
    ========================================================================== */
+
+/* Services Overview Section */
+.services-overview {
+    padding: 80px 0;
+    background: var(--warm-white);
+}
+
+.services-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.service-overview-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 40px 32px;
+    border: 1px solid var(--light-gray);
+}
+
+.service-overview-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+}
+
+.service-overview-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: none;
+}
+
+@media (max-width: 900px) {
+    .services-overview-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Service Selection Section */
 .service-selection {
@@ -159,6 +197,47 @@
     background: var(--warm-white);
 }
 
+.bank-info--prominent {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.bank-info--prominent .bank-credits-info {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 48px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.bank-info--prominent .bank-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.bank-info--prominent h3 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.bank-info--prominent p {
+    color: rgba(255,255,255,0.9);
+    max-width: none;
+    margin-bottom: 24px;
+}
+
+.bank-info--prominent .btn-secondary {
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+
+.bank-info--prominent .btn-secondary:hover {
+    background: white;
+    color: var(--primary-dark);
+}
+
 .bank-credits-info {
     text-align: center;
 }
@@ -174,6 +253,12 @@
     color: var(--text-muted);
     max-width: 500px;
     margin: 0 auto;
+}
+
+/* Centered CTA Button */
+.cta-button-centered {
+    display: flex;
+    justify-content: center;
 }
 
 /* Services CTA */
