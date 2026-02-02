@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Process Architect</title>
+    <meta name="description" content="Systems thinking, property management insights, and practical resources from Process Architect.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <style>
+        @font-face {
+            font-family: 'MuseoModerno';
+            src: url('https://fonts.gstatic.com/s/museomoderno/v27/~ChEKDE11c2VvTW9kZXJubxjYBCAB.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="container">
+        <a href="/" class="logo">
+            <span class="site-title">Process Architect</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/services">Services & Pricing</a></li>
+            <li><a href="/crane">Crane Partnership</a></li>
+            <li><a href="/community">Community</a></li>
+            <li><a href="/blog" class="active">Blog</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="page-hero blog-hero">
+    <div class="container">
+        <span class="eyebrow">Blog</span>
+        <h1>Systems Thinking for PM Operators</h1>
+        <p>Practical insights on building better processes, using software effectively, and running smoother operations.</p>
+    </div>
+</section>
+
+<!-- Blog Archive -->
+<section class="blog-archive">
+    <div class="container">
+        <div class="no-posts">
+            <h2>Coming Soon</h2>
+            <p>We're working on some great content for you. In the meantime, join The Architects to be the first to know when we publish.</p>
+            <a href="https://www.skool.com/thearchitects/about" class="btn btn-primary" target="_blank">Join The Architects</a>
+        </div>
+
+        <!--
+        When you have blog posts, replace the "no-posts" section with something like:
+
+        <div class="posts-grid">
+            <article class="post-card">
+                <a href="/blog/post-slug" class="post-thumbnail post-thumbnail--placeholder">
+                    <span>Featured Image</span>
+                </a>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Systems</span>
+                        <span class="post-date">January 15, 2026</span>
+                    </div>
+                    <h3 class="post-title"><a href="/blog/post-slug">Post Title Here</a></h3>
+                    <p class="post-excerpt">A brief excerpt from the post goes here...</p>
+                    <a href="/blog/post-slug" class="post-link">Read More</a>
+                </div>
+            </article>
+        </div>
+        -->
+    </div>
+</section>
+
+<!-- Blog CTA -->
+<section class="blog-cta">
+    <div class="container">
+        <div class="cta-box">
+            <h2>Get Updates in Your Inbox</h2>
+            <p>Join The Architects for systems insights and resources—delivered when we have something worth sharing.</p>
+            <a href="https://www.skool.com/thearchitects/about" class="btn btn-primary" target="_blank">Join The Architects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 Process Architect</p>
+    </div>
+</footer>
+
+<script>
+document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('active');
+    this.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>

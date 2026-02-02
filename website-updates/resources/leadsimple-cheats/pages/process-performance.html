@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Performance | LeadSimple Dashboard Cheat Sheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🌿</span>
+                Process Architect
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="service-quality.html">Service Quality</a></li>
+                <li><a href="process-performance.html" class="active">Process Performance</a></li>
+                <li><a href="team-performance.html">Team Performance</a></li>
+                <li><a href="customer-service.html">Customer Service</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../index.html">Home</a>
+        <a href="service-quality.html">Service Quality</a>
+        <a href="process-performance.html">Process Performance</a>
+        <a href="team-performance.html">Team Performance</a>
+        <a href="customer-service.html">Customer Service</a>
+    </div>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>⚙️ Process Performance</h1>
+            <p>Monitor your active, overdue, and off-track processes with detailed trend analysis to identify bottlenecks and optimization opportunities.</p>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <!-- Overview Screenshot -->
+        <div class="content-card">
+            <h2>Dashboard Overview</h2>
+            <div class="screenshot-container" id="screenshot-pp-overview">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Process Performance Overview Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('pp-overview')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-pp-overview" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-pp-overview')">
+            </div>
+
+            <div class="def-grid">
+                <div class="def-item">
+                    <strong>Active</strong>
+                    <span>Not in a completed or canceled stage</span>
+                </div>
+                <div class="def-item">
+                    <strong>On-track</strong>
+                    <span>Tasks AND Process is within due dates</span>
+                </div>
+                <div class="def-item">
+                    <strong>Off-track</strong>
+                    <span>Tasks overdue, process still within due date</span>
+                </div>
+                <div class="def-item">
+                    <strong>Overdue</strong>
+                    <span>Process overdue, even if tasks are within due dates</span>
+                </div>
+            </div>
+
+            <div class="callout info">
+                <div class="callout-title">📝 Rule of Thumb</div>
+                <p><strong>35-40% of your total door count</strong> should be in an active process at all times. If that number is higher, it may indicate that you have processes that are stuck, old, or backlogged.</p>
+            </div>
+        </div>
+
+        <!-- Questions to Ask -->
+        <div class="content-card">
+            <h2>Diagnostic Questions</h2>
+            <p>When reviewing your Process Performance data, ask yourself:</p>
+
+            <div class="questions-box">
+                <h4>Questions to Ask:</h4>
+                <ul>
+                    <li>Which processes have the most overdue?</li>
+                    <li>Which processes have the most off-track tasks?</li>
+                    <li>Which processes have the lowest Task Completion Rate?</li>
+                    <li>Which processes have the lowest % Completed on Time?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- View Trends Section -->
+        <div class="content-card">
+            <h2>🔍 Process-by-Process Details</h2>
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--dark-green);">→ At the top of "Process Performance", on the right hand corner - click "View Trends" ←</p>
+            <p style="font-style: italic; color: var(--gray-500);">Bet you didn't know this page even existed 😏</p>
+
+            <div class="screenshot-container" id="screenshot-trends">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>View Trends Panel Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('trends')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-trends" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-trends')">
+            </div>
+
+            <div class="callout info">
+                <div class="callout-title">📝 Tips for Using View Trends</div>
+                <ul>
+                    <li>This chart is <strong>process-by-process data</strong>. Toggle to the correct process at the top of the sidebar to find what you need.</li>
+                    <li>It DOES take time to load and can lag sometimes — be patient!</li>
+                    <li>The best data is found by toggling to <strong>"Last 30 days"</strong> instead of "Last 7 days"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Active Processes -->
+        <div class="content-card">
+            <h2>Active Processes</h2>
+            <div class="screenshot-container" id="screenshot-active">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Active Processes Chart Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('active')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-active" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-active')">
+            </div>
+
+            <p>These are processes that are currently active, categorized by their status:</p>
+
+            <div class="def-grid">
+                <div class="def-item">
+                    <strong>🟢 On-track</strong>
+                    <span>Tasks AND Process within due dates</span>
+                </div>
+                <div class="def-item">
+                    <strong>🟡 Off-track</strong>
+                    <span>Tasks overdue, process still within due date</span>
+                </div>
+                <div class="def-item">
+                    <strong>🔴 Overdue</strong>
+                    <span>Process overdue, even if tasks are within due dates</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Completion -->
+        <div class="content-card">
+            <h2>Task Completion</h2>
+            <div class="screenshot-container" id="screenshot-task-completion">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Task Completion Chart Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('task-completion')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-task-completion" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-task-completion')">
+            </div>
+
+            <p><em>Note: This data is shown <strong>per day</strong></em></p>
+            <p>This data shows you exactly how many tasks are being completed vs skipped inside of this specific process.</p>
+
+            <div class="callout warning">
+                <div class="callout-title">⚠️ Remember</div>
+                <p>A high skip rate = tasks your team finds unhelpful or not needed. This is a signal to review and potentially remove or modify those tasks.</p>
+            </div>
+        </div>
+
+        <!-- Processes Completed on Time -->
+        <div class="content-card">
+            <h2>Processes Completed on Time</h2>
+            <div class="screenshot-container" id="screenshot-on-time">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Processes Completed on Time Chart Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('on-time')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-on-time" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-on-time')">
+            </div>
+
+            <p><em>Note: This data is shown <strong>per day</strong></em></p>
+            <p>This data shows you exactly how many processes were completed, as well as which ones were completed within their due date.</p>
+
+            <div class="callout warning">
+                <div class="callout-title">⚠️ Remember</div>
+                <p>A high % of processes completed overdue means your team isn't given enough time to complete the work. Review your default due dates!</p>
+            </div>
+        </div>
+
+        <!-- Time to Complete -->
+        <div class="content-card">
+            <h2>Time to Complete Processes</h2>
+            <div class="screenshot-container" id="screenshot-time-complete">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Time to Complete Processes Chart Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('time-complete')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-time-complete" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-time-complete')">
+            </div>
+
+            <p>Ever wondered how long it really takes your team to complete a process? <strong>Now you know!</strong></p>
+            <p>This data gives you an average, as well as a graph showing when processes took longer than other times. Use this to:</p>
+            <ul>
+                <li>Set realistic expectations with clients</li>
+                <li>Identify seasonal patterns or bottlenecks</li>
+                <li>Benchmark your team's performance over time</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <a href="service-quality.html" class="btn btn-outline">← Service Quality</a>
+            <a href="team-performance.html" class="btn btn-primary">Team Performance →</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">🌿</span>
+                <span>Process Architect</span>
+            </div>
+            <p>&copy; 2025 Process Architect. Built with care for property managers.</p>
+            <a href="mailto:Madeline@myprocessarchitect.com">Madeline@myprocessarchitect.com</a>
+        </div>
+    </footer>
+
+    <script src="../images.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

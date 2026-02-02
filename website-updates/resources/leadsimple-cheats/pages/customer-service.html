@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Indicators | LeadSimple Dashboard Cheat Sheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🌿</span>
+                Process Architect
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="service-quality.html">Service Quality</a></li>
+                <li><a href="process-performance.html">Process Performance</a></li>
+                <li><a href="team-performance.html">Team Performance</a></li>
+                <li><a href="customer-service.html" class="active">Customer Service</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../index.html">Home</a>
+        <a href="service-quality.html">Service Quality</a>
+        <a href="process-performance.html">Process Performance</a>
+        <a href="team-performance.html">Team Performance</a>
+        <a href="customer-service.html">Customer Service</a>
+    </div>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>💬 Customer Service Indicators</h1>
+            <p>Inbox Users Exclusive: Track first response times and support burden across owners, tenants, and vendors.</p>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <!-- Note about Inbox Users -->
+        <div class="content-card">
+            <h2>📝 Before You Begin</h2>
+            <div class="callout info">
+                <div class="callout-title">Inbox Users Only</div>
+                <p>This section is <strong>exclusive to Inbox users</strong>. If you're not using the LeadSimple Inbox feature, you won't see these metrics in your dashboard.</p>
+            </div>
+        </div>
+
+        <!-- Overview Screenshot -->
+        <div class="content-card">
+            <h2>Dashboard Overview</h2>
+            <div class="screenshot-container" id="screenshot-cs-overview">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Customer Service Overview Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('cs-overview')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-cs-overview" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-cs-overview')">
+            </div>
+        </div>
+
+        <!-- First Response Time -->
+        <div class="content-card">
+            <h2>First Response Time</h2>
+            <div class="screenshot-container" id="screenshot-cs-response">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>First Response Time Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('cs-response')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-cs-response" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-cs-response')">
+            </div>
+
+            <p><strong>How quickly did your team respond to a call, email, or text?</strong></p>
+
+            <p>This metric is broken out by contact type, pulled from your Owner/Vendor/Tenant pipelines:</p>
+            <ul>
+                <li><strong>Owners:</strong> Response time to property owner inquiries</li>
+                <li><strong>Tenants:</strong> Response time to tenant communications</li>
+                <li><strong>Vendors:</strong> Response time to vendor messages</li>
+            </ul>
+
+            <div class="callout success">
+                <div class="callout-title">🎯 Target: 2-4 hours</div>
+                <p>Quick response times build trust and reduce escalations. Aim to respond within the same business day at minimum.</p>
+            </div>
+        </div>
+
+        <!-- Support Burden -->
+        <div class="content-card">
+            <h2>Support Burden: New Inbound Conversations</h2>
+            <div class="screenshot-container" id="screenshot-support">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Support Burden Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('support')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-support" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-support')">
+            </div>
+
+            <p><strong>How many times did your team receive new communication?</strong></p>
+
+            <p>This helps you understand the volume of inbound requests, broken down by:</p>
+            <ul>
+                <li><strong>Owners:</strong> Conversations initiated by property owners</li>
+                <li><strong>Tenants:</strong> Conversations initiated by tenants</li>
+                <li><strong>Vendors:</strong> Conversations initiated by vendors</li>
+            </ul>
+
+            <div class="callout info">
+                <div class="callout-title">💡 How to Use This Data</div>
+                <ul>
+                    <li>High tenant volume? Consider self-service options or FAQ resources</li>
+                    <li>High owner volume? May indicate reporting or communication gaps</li>
+                    <li>High vendor volume? Review your vendor management processes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Conversation Data -->
+        <div class="content-card">
+            <h2>Conversation Data</h2>
+            <div class="screenshot-container" id="screenshot-conversations">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Conversation Data Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('conversations')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-conversations" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-conversations')">
+            </div>
+
+            <p>This one is pretty self-explanatory! Track your team's communication volume and patterns across all contact types.</p>
+
+            <p>Use this data to:</p>
+            <ul>
+                <li>Identify peak communication times</li>
+                <li>Staff appropriately for busy periods</li>
+                <li>Track communication trends over time</li>
+                <li>Measure the impact of process improvements on communication volume</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <a href="team-performance.html" class="btn btn-outline">← Team Performance</a>
+            <a href="../index.html" class="btn btn-primary">Back to Overview →</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">🌿</span>
+                <span>Process Architect</span>
+            </div>
+            <p>&copy; 2025 Process Architect. Built with care for property managers.</p>
+            <a href="mailto:Madeline@myprocessarchitect.com">Madeline@myprocessarchitect.com</a>
+        </div>
+    </footer>
+
+    <script src="../images.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

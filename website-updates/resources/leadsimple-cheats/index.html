@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadSimple Dashboard Cheat Sheet | Process Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌿</span>
+                Process Architect
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="openModal('diagnosis-modal')">Self-Diagnosis</a></li>
+                <li><a href="pages/service-quality.html">Service Quality</a></li>
+                <li><a href="pages/process-performance.html">Process Performance</a></li>
+                <li><a href="pages/team-performance.html">Team Performance</a></li>
+                <li><a href="pages/customer-service.html">Customer Service</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#" onclick="openModal('diagnosis-modal'); toggleMobileMenu();">Self-Diagnosis Quiz</a>
+        <a href="pages/service-quality.html">Service Quality</a>
+        <a href="pages/process-performance.html">Process Performance</a>
+        <a href="pages/team-performance.html">Team Performance</a>
+        <a href="pages/customer-service.html">Customer Service</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>LeadSimple Dashboard Cheat Sheet</h1>
+            <p>Your complete guide to understanding and optimizing your LeadSimple analytics for better property management operations.</p>
+            <button class="btn btn-primary btn-lg" onclick="openModal('diagnosis-modal')">
+                Take the Self-Diagnosis Quiz →
+            </button>
+        </div>
+        <div class="hero-decoration"></div>
+    </header>
+
+    <!-- Quick Nav Cards -->
+    <main class="main-content">
+        <section class="card-grid">
+            <a href="#" onclick="openModal('diagnosis-modal')" class="nav-card">
+                <div class="card-icon">🩺</div>
+                <h3>Process Health Quiz</h3>
+                <p>Take our interactive quiz to diagnose the health of your operational workflows.</p>
+                <span class="card-link">Take Quiz →</span>
+            </a>
+            <a href="pages/service-quality.html" class="nav-card">
+                <div class="card-icon">📊</div>
+                <h3>Service Quality Indicators</h3>
+                <p>Track processes completed on time, task completion rates, response times, and occupancy.</p>
+                <span class="card-link">Learn More →</span>
+            </a>
+            <a href="pages/process-performance.html" class="nav-card">
+                <div class="card-icon">⚙️</div>
+                <h3>Process Performance</h3>
+                <p>Monitor active, overdue, and off-track processes with detailed trend analysis.</p>
+                <span class="card-link">Learn More →</span>
+            </a>
+            <a href="pages/team-performance.html" class="nav-card">
+                <div class="card-icon">👥</div>
+                <h3>Team Performance</h3>
+                <p>Evaluate individual team member metrics including tasks due, overdue, and completion rates.</p>
+                <span class="card-link">Learn More →</span>
+            </a>
+            <a href="pages/customer-service.html" class="nav-card">
+                <div class="card-icon">💬</div>
+                <h3>Customer Service</h3>
+                <p>Inbox users: Track first response times and support burden across owners, tenants, and vendors.</p>
+                <span class="card-link">Learn More →</span>
+            </a>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview-section">
+            <h2>Understanding Your Dashboard</h2>
+            <p>Your LeadSimple dashboard provides critical insights into your property management operations. This guide breaks down each metric, explains what targets you should aim for, and helps you identify areas for improvement.</p>
+
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <h4>🎯 Targets</h4>
+                    <p>Each metric includes recommended targets based on industry best practices.</p>
+                </div>
+                <div class="overview-item">
+                    <h4>💡 Insights</h4>
+                    <p>Learn what your numbers really mean and how to interpret them.</p>
+                </div>
+                <div class="overview-item">
+                    <h4>🔧 Actions</h4>
+                    <p>Get specific recommendations for improving underperforming areas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Need Help Optimizing Your Processes?</h2>
+            <p>Our team specializes in LeadSimple implementations and process optimization for property managers.</p>
+            <a href="mailto:Madeline@myprocessarchitect.com" class="btn btn-white">Get in Touch →</a>
+        </section>
+    </main>
+
+    <!-- Diagnosis Quiz Modal -->
+    <div class="modal-overlay" id="diagnosis-modal">
+        <div class="modal-content quiz-modal">
+            <button class="modal-close" onclick="closeModal('diagnosis-modal')">&times;</button>
+
+            <!-- Quiz Container -->
+            <div id="quiz-container">
+                <!-- Intro Screen -->
+                <div class="quiz-screen active" id="quiz-intro">
+                    <div class="quiz-header">
+                        <h2>🩺 Process Health Self-Diagnosis</h2>
+                        <p>Answer 5 quick questions to assess the health of your operational workflows in LeadSimple.</p>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start Quiz →</button>
+                </div>
+
+                <!-- Question 1 -->
+                <div class="quiz-screen" id="quiz-q1">
+                    <div class="quiz-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 20%"></div></div>
+                        <span>Question 1 of 5</span>
+                    </div>
+                    <div class="quiz-question">
+                        <h3>Is your process completion rate below 75%?</h3>
+                        <p class="question-help">Check your "Processes Completed On Time" metric in the Service Quality Indicators section.</p>
+                    </div>
+                    <div class="quiz-answers">
+                        <button class="answer-btn" onclick="answerQuestion(1, 'yes')">
+                            <span class="answer-label">Yes, below 75%</span>
+                            <span class="answer-desc">Processes aren't being completed on time</span>
+                        </button>
+                        <button class="answer-btn" onclick="answerQuestion(1, 'no')">
+                            <span class="answer-label">No, 75% or higher</span>
+                            <span class="answer-desc">Team is generally completing processes by due dates</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-screen" id="quiz-q2">
+                    <div class="quiz-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 40%"></div></div>
+                        <span>Question 2 of 5</span>
+                    </div>
+                    <div class="quiz-question">
+                        <h3>Is your task completion rate below 97%?</h3>
+                        <p class="question-help">Check your "Task Completion Rate" in Service Quality Indicators.</p>
+                    </div>
+                    <div class="quiz-answers">
+                        <button class="answer-btn" onclick="answerQuestion(2, 'below97')">
+                            <span class="answer-label">Yes, below 97%</span>
+                            <span class="answer-desc">Incomplete or skipped tasks may be hiding issues</span>
+                        </button>
+                        <button class="answer-btn" onclick="answerQuestion(2, 'above97')">
+                            <span class="answer-label">No, 97% or higher</span>
+                            <span class="answer-desc">Solid follow-through on tasks</span>
+                        </button>
+                        <button class="answer-btn" onclick="answerQuestion(2, '100')">
+                            <span class="answer-label">It's exactly 100%</span>
+                            <span class="answer-desc">Perfect completion rate</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-screen" id="quiz-q3">
+                    <div class="quiz-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+                        <span>Question 3 of 5</span>
+                    </div>
+                    <div class="quiz-question">
+                        <h3>Do you have more than 40 active processes per 100 doors?</h3>
+                        <p class="question-help">Example: A 100-door company should have fewer than 40 active processes at any one time.</p>
+                        <div class="calculator-mini">
+                            <label>Quick Calculator:</label>
+                            <input type="number" id="door-count" placeholder="Your door count" oninput="calculateRatio()">
+                            <input type="number" id="process-count" placeholder="Active processes" oninput="calculateRatio()">
+                            <span id="ratio-result"></span>
+                        </div>
+                    </div>
+                    <div class="quiz-answers">
+                        <button class="answer-btn" onclick="answerQuestion(3, 'yes')">
+                            <span class="answer-label">Yes, more than 40%</span>
+                            <span class="answer-desc">Could be a sign of process overload</span>
+                        </button>
+                        <button class="answer-btn" onclick="answerQuestion(3, 'no')">
+                            <span class="answer-label">No, under 40%</span>
+                            <span class="answer-desc">Process load is likely manageable</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-screen" id="quiz-q4">
+                    <div class="quiz-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+                        <span>Question 4 of 5</span>
+                    </div>
+                    <div class="quiz-question">
+                        <h3>Are more than 50% of your active processes overdue?</h3>
+                        <p class="question-help">Check your Process Performance section for the Overdue count vs Active count.</p>
+                    </div>
+                    <div class="quiz-answers">
+                        <button class="answer-btn" onclick="answerQuestion(4, 'yes')">
+                            <span class="answer-label">Yes, more than 50% overdue</span>
+                            <span class="answer-desc">Overdue processes likely slowing operations</span>
+                        </button>
+                        <button class="answer-btn" onclick="answerQuestion(4, 'no')">
+                            <span class="answer-label">No, under 50% overdue</span>
+                            <span class="answer-desc">May have volume issues, but not execution breakdowns</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-screen" id="quiz-q5">
+                    <div class="quiz-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                        <span>Question 5 of 5</span>
+                    </div>
+                    <div class="quiz-question">
+                        <h3>Have you run more than 150 processes in the past 90 days?</h3>
+                        <p class="question-help">This helps us understand if you're actively using your system.</p>
+                    </div>
+                    <div class="quiz-answers">
+                        <button class="answer-btn" onclick="answerQuestion(5, 'yes')">
+                            <span class="answer-label">Yes, more than 150</span>
+                            <span class="answer-desc">Scaling well and maintaining activity</span>
+                        </button>
+                        <button class="answer-btn" onclick="answerQuestion(5, 'no')">
+                            <span class="answer-label">No, fewer than 150</span>
+                            <span class="answer-desc">May not be using systems to match business pace</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lead Capture Form -->
+                <div class="quiz-screen" id="quiz-capture">
+                    <div class="quiz-header">
+                        <h2>🎉 Quiz Complete!</h2>
+                        <p>Enter your details below to see your personalized diagnosis and recommendations.</p>
+                    </div>
+                    <form id="lead-form" onsubmit="submitLeadForm(event)">
+                        <div class="form-group">
+                            <label for="lead-name">Your Name *</label>
+                            <input type="text" id="lead-name" name="name" required placeholder="Jane Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="lead-email">Email Address *</label>
+                            <input type="email" id="lead-email" name="email" required placeholder="jane@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="lead-company">Company Name (optional)</label>
+                            <input type="text" id="lead-company" name="company" placeholder="ABC Property Management">
+                        </div>
+                        <div class="form-group">
+                            <label for="lead-doors">Door Count (optional)</label>
+                            <input type="number" id="lead-doors" name="doors" placeholder="150">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-full">See My Results →</button>
+                    </form>
+                </div>
+
+                <!-- Results Screen -->
+                <div class="quiz-screen" id="quiz-results">
+                    <div class="results-container">
+                        <div id="results-content">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <div class="results-actions">
+                            <button class="btn btn-outline" onclick="resetQuiz()">Retake Quiz</button>
+                            <a href="mailto:Madeline@myprocessarchitect.com?subject=Process Health Consultation" class="btn btn-primary">Book a Consultation →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Netlify Form (for bot detection - required by Netlify) -->
+    <form name="quiz-submissions" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="bot-field">
+        <input type="text" name="name">
+        <input type="email" name="email">
+        <input type="text" name="company">
+        <input type="text" name="doors">
+        <input type="text" name="q1-process-completion">
+        <input type="text" name="q2-task-completion">
+        <input type="text" name="q3-processes-per-door">
+        <input type="text" name="q4-overdue-percentage">
+        <input type="text" name="q5-processes-90-days">
+        <input type="text" name="diagnosis-status">
+        <input type="text" name="diagnosis-title">
+        <textarea name="diagnosis-findings"></textarea>
+        <textarea name="diagnosis-recommendations"></textarea>
+    </form>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">🌿</span>
+                <span>Process Architect</span>
+            </div>
+            <p>&copy; 2025 Process Architect. Built with care for property managers.</p>
+            <a href="mailto:Madeline@myprocessarchitect.com">Madeline@myprocessarchitect.com</a>
+        </div>
+    </footer>
+
+    <script src="quiz.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Calculator for Q3
+        function calculateRatio() {
+            const doors = parseInt(document.getElementById('door-count').value) || 0;
+            const processes = parseInt(document.getElementById('process-count').value) || 0;
+            const result = document.getElementById('ratio-result');
+
+            if (doors > 0 && processes > 0) {
+                const ratio = (processes / doors) * 100;
+                result.textContent = `${ratio.toFixed(1)}% (${ratio > 40 ? 'Above' : 'Below'} 40%)`;
+                result.className = ratio > 40 ? 'ratio-high' : 'ratio-ok';
+            } else {
+                result.textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>

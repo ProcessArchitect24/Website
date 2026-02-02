@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's Stealing Your Peace? | Process Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <style>
+        :root {
+            --sage-green: #7B9E87;
+            --sage-dark: #5A7D66;
+            --sage-light: #E8F0EA;
+            --cream: #FDFCFA;
+            --charcoal: #2D3436;
+            --warm-gray: #636E72;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header - Peter Lohmann style bridge */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        .header-intro {
+            font-size: 14px;
+            color: var(--warm-gray);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .header-logo-img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--sage-green);
+        }
+
+        .logo-icon img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--sage-green);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .header-tagline {
+            font-size: 16px;
+            color: var(--warm-gray);
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 32px;
+        }
+
+        .quiz-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quiz-intro h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .quiz-intro p {
+            font-size: 18px;
+            color: var(--warm-gray);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 32px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--sage-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--sage-green);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            font-size: 13px;
+            color: var(--warm-gray);
+            margin-top: 8px;
+            text-align: right;
+        }
+
+        /* Question Styles */
+        .question-container {
+            display: none;
+        }
+
+        .question-container.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 18px 24px;
+            background: var(--cream);
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            border-color: var(--sage-green);
+            background: var(--sage-light);
+        }
+
+        .option-btn.selected {
+            border-color: var(--sage-green);
+            background: var(--sage-light);
+        }
+
+        /* Start Button */
+        .start-btn {
+            width: 100%;
+            padding: 18px 32px;
+            background: var(--sage-green);
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .start-btn:hover {
+            background: var(--sage-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Email Form */
+        .email-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 3px rgba(123, 158, 135, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .results-label {
+            font-size: 14px;
+            color: var(--sage-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .results-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+        }
+
+        .results-description {
+            font-size: 17px;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        /* Calendly Container */
+        .calendly-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 32px;
+        }
+
+        .calendly-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .calendly-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .calendly-header p {
+            font-size: 16px;
+            color: var(--warm-gray);
+        }
+
+        .calendly-embed {
+            min-height: 650px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Crane Partnership Callout */
+        .crane-callout {
+            background: linear-gradient(135deg, var(--sage-light) 0%, #F5F9F6 100%);
+            border: 2px solid var(--sage-green);
+            border-radius: 16px;
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .crane-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .crane-icon img {
+            width: 56px;
+            height: 56px;
+        }
+
+        .crane-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--sage-green);
+        }
+
+        .crane-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+
+        .crane-content p {
+            font-size: 15px;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+
+        .crane-content a {
+            color: var(--sage-dark);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #E5E5E5;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-icon img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-logo-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--sage-green);
+        }
+
+        .footer-logo span {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: var(--warm-gray);
+            margin-bottom: 16px;
+        }
+
+        .footer-link {
+            display: inline-block;
+            color: var(--sage-green);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .quiz-section {
+                padding: 28px 20px;
+            }
+
+            .quiz-intro h1 {
+                font-size: 26px;
+            }
+
+            .question-text {
+                font-size: 19px;
+            }
+
+            .crane-callout {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .calendly-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <p class="header-intro">From Peter Lohmann's Newsletter</p>
+            <div class="header-logo">
+                <img src="data:image/webp;base64,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" alt="Process Architect" class="header-logo-img">
+                <span class="logo-text">Process Architect</span>
+            </div>
+            <p class="header-tagline">Creating Peace through Process</p>
+        </header>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quizSection">
+            <!-- Intro Screen -->
+            <div class="question-container active" id="intro">
+                <div class="quiz-intro">
+                    <h1>What's Stealing Your Peace?</h1>
+                    <p>Take this 60-second assessment to identify the operational gaps holding your business back — and discover how to fix them.</p>
+                </div>
+                <button class="start-btn" onclick="startQuiz()">Let's Find Out →</button>
+            </div>
+
+            <!-- Progress Bar (hidden on intro) -->
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <p class="progress-text"><span id="currentQ">1</span> of <span id="totalQ">6</span></p>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-container" id="q1">
+                <h2 class="question-text">How often does your team ask you the same question twice?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(1, 'rarely', 1)">Rarely — we've got solid documentation</button>
+                    <button class="option-btn" onclick="selectOption(1, 'sometimes', 2)">Sometimes — certain things keep coming up</button>
+                    <button class="option-btn" onclick="selectOption(1, 'constantly', 3)">Constantly — I'm the walking FAQ</button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-container" id="q2">
+                <h2 class="question-text">When a new property comes in, onboarding feels...</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(2, 'smooth', 1)">Smooth — we have a clear system</button>
+                    <button class="option-btn" onclick="selectOption(2, 'bumpy', 2)">Bumpy — things get missed occasionally</button>
+                    <button class="option-btn" onclick="selectOption(2, 'chaotic', 3)">Chaotic — every time is different</button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-container" id="q3">
+                <h2 class="question-text">Your SOPs and processes currently live...</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(3, 'documented', 1)">Documented & accessible to the team</button>
+                    <button class="option-btn" onclick="selectOption(3, 'scattered', 2)">Scattered across docs, emails, and Slack</button>
+                    <button class="option-btn" onclick="selectOption(3, 'head', 3)">Mostly in my head</button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-container" id="q4">
+                <h2 class="question-text">When you think about your operations, you feel...</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(4, 'confident', 1)">Confident — things run without me</button>
+                    <button class="option-btn" onclick="selectOption(4, 'stretched', 2)">Stretched thin — I'm holding it together</button>
+                    <button class="option-btn" onclick="selectOption(4, 'overwhelmed', 3)">Overwhelmed — fires everywhere</button>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-container" id="q5">
+                <h2 class="question-text">Which process causes the most headaches for your team?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(5, 'late_rent', 3)">Late rent & collections</button>
+                    <button class="option-btn" onclick="selectOption(5, 'moveouts', 3)">Move-outs & turnovers</button>
+                    <button class="option-btn" onclick="selectOption(5, 'applications', 3)">Applications & screening</button>
+                    <button class="option-btn" onclick="selectOption(5, 'maintenance', 3)">Maintenance coordination</button>
+                    <button class="option-btn" onclick="selectOption(5, 'delinquency', 3)">Delinquency & evictions</button>
+                    <button class="option-btn" onclick="selectOption(5, 'owner_comms', 3)">Owner communications</button>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-container" id="q6">
+                <h2 class="question-text">When a key team member is out sick or on vacation...</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(6, 'runs_fine', 1)">Things run smoothly — anyone can step in</button>
+                    <button class="option-btn" onclick="selectOption(6, 'some_delays', 2)">Some delays — we manage but it's rough</button>
+                    <button class="option-btn" onclick="selectOption(6, 'everything_stops', 3)">Everything stops — only they know how</button>
+                </div>
+            </div>
+
+            <!-- Email Capture Form -->
+            <div class="question-container" id="emailCapture">
+                <h2 class="question-text">Almost there! Where should we send your results?</h2>
+                <p style="color: var(--warm-gray); margin-bottom: 24px; font-size: 16px;">Get your personalized Peace Stealer report plus actionable tips to fix it.</p>
+                <div class="email-form">
+                    <input type="text" id="userName" class="form-input" placeholder="Your name" required>
+                    <input type="email" id="userEmail" class="form-input" placeholder="Your email" required>
+                    <button class="cta-button" onclick="submitForm()" style="width: 100%; margin-top: 8px;">
+                        Get My Results →
+                    </button>
+                    <p style="font-size: 13px; color: var(--warm-gray); margin-top: 12px; text-align: center;">No spam, ever. Just helpful PM systems content.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <div class="quiz-section">
+                <div class="results-header">
+                    <p class="results-label" id="resultsLabel">Your Results</p>
+                    <h2 class="results-title" id="resultsTitle">Your Peace Stealer: Tribal Knowledge</h2>
+                    <p class="results-description" id="resultsDescription">
+                        Your processes live in people's heads instead of documented systems. This creates bottlenecks, inconsistent service, and makes it nearly impossible to scale — or take a vacation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Crane Partnership Callout -->
+            <div class="crane-callout">
+                <div class="crane-icon">
+                    <img src="data:image/webp;base64,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" alt="Process Architect" style="width: 32px; height: 32px; ">
+                </div>
+                <div class="crane-content">
+                    <h3>Proud Partner of Crane</h3>
+                    <p>Process Architect is the official PM Systems Expert for <a href="https://www.joincrane.co" target="_blank">Crane</a> — the premier community for serious property management operators. We help Crane members streamline operations, troubleshoot systems, and implement proven best practices.</p>
+                </div>
+            </div>
+
+            <!-- Calendly Embed -->
+            <div class="calendly-container">
+                <div class="calendly-header">
+                    <h2>Let's Talk About Your Operations</h2>
+                    <p>Book a free discovery call and we'll map out exactly where your systems need work.</p>
+                </div>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/processarchitect/discovery-call?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">
+                    <img src="data:image/webp;base64,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" alt="Process Architect" style="width: 18px; height: 18px; ">
+                </div>
+                <span>Process Architect</span>
+            </div>
+            <p class="footer-tagline">Creating Peace through Process</p>
+            <div class="footer-links">
+                <a href="https://myprocessarchitect.com" target="_blank" class="footer-link">Visit myprocessarchitect.com →</a>
+                <a href="https://www.linkedin.com/company/myprocessarchitect" target="_blank" class="footer-link">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let answers = {};
+        let totalScore = 0;
+        let userData = {};
+        const totalQuestions = 6;
+
+        function startQuiz() {
+            document.getElementById('intro').classList.remove('active');
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('q1').classList.add('active');
+            currentQuestion = 1;
+            updateProgress();
+        }
+
+        function selectOption(questionNum, answer, score) {
+            answers[questionNum] = { answer, score };
+            totalScore += score;
+            
+            // Visual feedback
+            const buttons = document.querySelectorAll(`#q${questionNum} .option-btn`);
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+            
+            // Brief delay then advance
+            setTimeout(() => {
+                document.getElementById(`q${questionNum}`).classList.remove('active');
+                
+                if (questionNum < totalQuestions) {
+                    document.getElementById(`q${questionNum + 1}`).classList.add('active');
+                    currentQuestion = questionNum + 1;
+                    updateProgress();
+                } else {
+                    // Show email capture form
+                    document.getElementById('emailCapture').classList.add('active');
+                    document.getElementById('progressContainer').style.display = 'none';
+                }
+            }, 300);
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentQ').textContent = currentQuestion;
+            document.getElementById('totalQ').textContent = totalQuestions;
+        }
+
+        function submitForm() {
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            
+            if (!name || !email) {
+                alert('Please enter your name and email to see your results.');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            userData = { name, email, answers, totalScore };
+            
+            // Log for now (you can integrate with your email service)
+            console.log('Form submitted:', userData);
+            
+            showResults();
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function showResults() {
+            document.getElementById('quizSection').style.display = 'none';
+            document.getElementById('resultsSection').classList.add('active');
+            
+            // Get the process that causes most headaches
+            const processAnswer = answers[5]?.answer;
+            
+            // Determine primary peace stealer based on answers
+            let title, description;
+            
+            // Process-specific outcomes take priority if team member absence is problematic
+            if (answers[6]?.answer === 'everything_stops') {
+                // Critical dependency on individuals - combine with their process pain point
+                const processNames = {
+                    'late_rent': 'Late Rent & Collections',
+                    'moveouts': 'Move-Outs & Turnovers', 
+                    'applications': 'Applications & Screening',
+                    'maintenance': 'Maintenance Coordination',
+                    'delinquency': 'Delinquency & Evictions',
+                    'owner_comms': 'Owner Communications'
+                };
+                const processName = processNames[processAnswer] || 'your key processes';
+                title = `Your Peace Stealer: ${processName} Bottleneck`;
+                description = `Your ${processName.toLowerCase()} process is trapped in someone's head. When they're out, everything grinds to a halt. We'll help you document and systematize this critical workflow so anyone on your team can handle it confidently.`;
+            } else if (processAnswer === 'late_rent' || processAnswer === 'delinquency') {
+                title = "Your Peace Stealer: Collections Chaos";
+                description = "Late rent and delinquency processes are reactive instead of systematic. Without clear escalation paths and automated reminders, money slips through the cracks and tough conversations get delayed. Let's build a collections system that's consistent and effective.";
+            } else if (processAnswer === 'moveouts') {
+                title = "Your Peace Stealer: Turnover Turbulence";
+                description = "Move-outs and turnovers are eating up time and causing costly delays. Without a streamlined turnover process, vacant days stack up and your team scrambles between inspections, vendors, and marketing. We'll systematize your turnover workflow from notice to move-in ready.";
+            } else if (processAnswer === 'applications') {
+                title = "Your Peace Stealer: Application Avalanche";
+                description = "Your application and screening process is inconsistent, slow, or both. Good applicants slip away while your team manually pushes paperwork around. Let's build a screening workflow that's fast, fair, and keeps qualified tenants moving through the pipeline.";
+            } else if (processAnswer === 'maintenance') {
+                title = "Your Peace Stealer: Maintenance Mayhem";
+                description = "Maintenance requests are falling through the cracks, vendors aren't being held accountable, and tenants are frustrated. A systematized maintenance workflow will help you track, prioritize, and resolve issues before they become emergencies.";
+            } else if (processAnswer === 'owner_comms') {
+                title = "Your Peace Stealer: Owner Communication Gaps";
+                description = "Owners feel out of the loop, and you're spending too much time answering the same questions. Proactive, systematized owner communications build trust and free up your time for higher-value work.";
+            } else if (answers[3]?.answer === 'head' || answers[1]?.answer === 'constantly') {
+                title = "Your Peace Stealer: Tribal Knowledge";
+                description = "Your processes live in people's heads instead of documented systems. This creates bottlenecks, inconsistent service, and makes it nearly impossible to scale — or take a vacation. The good news? This is exactly what we fix.";
+            } else if (answers[2]?.answer === 'chaotic' || answers[2]?.answer === 'bumpy') {
+                title = "Your Peace Stealer: Onboarding Chaos";
+                description = "Every new property feels like reinventing the wheel. Without a repeatable onboarding system, details slip through the cracks, owners lose confidence, and your team stays reactive instead of proactive.";
+            } else if (answers[4]?.answer === 'overwhelmed' || answers[4]?.answer === 'stretched') {
+                title = "Your Peace Stealer: Operational Overwhelm";
+                description = "You're the glue holding everything together — and it's exhausting. Your business needs systems that run without you so you can focus on growth instead of constant firefighting.";
+            } else if (answers[3]?.answer === 'scattered') {
+                title = "Your Peace Stealer: Scattered Systems";
+                description = "Your knowledge exists, but it's buried across emails, docs, and random folders. When information is hard to find, your team wastes time searching — and mistakes happen.";
+            } else {
+                title = "You're Ahead of the Game";
+                description = "Your systems are in decent shape, but there's always room to optimize. Let's talk about taking your operations from good to exceptional — and giving you even more peace of mind.";
+            }
+            
+            document.getElementById('resultsTitle').textContent = title;
+            document.getElementById('resultsDescription').textContent = description;
+            
+            // Personalize greeting if we have their name
+            if (userData.name) {
+                document.getElementById('resultsLabel').textContent = `${userData.name}, here are your results`;
+            }
+            
+            // Scroll to top of results
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Quality Indicators | LeadSimple Dashboard Cheat Sheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🌿</span>
+                Process Architect
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="service-quality.html" class="active">Service Quality</a></li>
+                <li><a href="process-performance.html">Process Performance</a></li>
+                <li><a href="team-performance.html">Team Performance</a></li>
+                <li><a href="customer-service.html">Customer Service</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../index.html">Home</a>
+        <a href="service-quality.html">Service Quality</a>
+        <a href="process-performance.html">Process Performance</a>
+        <a href="team-performance.html">Team Performance</a>
+        <a href="customer-service.html">Customer Service</a>
+    </div>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>📊 Service Quality Indicators</h1>
+            <p>These factors influence the quality of service you're providing to clients. They will give you an idea of how well you are doing the work.</p>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <!-- Overview Screenshot -->
+        <div class="content-card">
+            <h2>Dashboard Overview</h2>
+            <div class="screenshot-container" id="screenshot-overview">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Service Quality Indicators Overview Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('overview')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-overview" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-overview')">
+            </div>
+        </div>
+
+        <!-- Processes Completed On Time -->
+        <div class="content-card">
+            <h2>Processes Completed On Time</h2>
+            <div class="screenshot-container" id="screenshot-completed">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Processes Completed On Time Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('completed')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-completed" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-completed')">
+            </div>
+
+            <div class="target-badge">Target: 85-90%</div>
+
+            <div class="def-grid">
+                <div class="def-item">
+                    <strong>On Time</strong>
+                    <span>Processes completed on or before the Process Due Date</span>
+                </div>
+                <div class="def-item">
+                    <strong>Overdue</strong>
+                    <span>Processes completed after the Process Due Date</span>
+                </div>
+            </div>
+
+            <div class="callout info">
+                <div class="callout-title">📝 Important Notes</div>
+                <ul>
+                    <li>Only tracks the last 30 days</li>
+                    <li>Does not show processes still in Active Stages, only Completed and Canceled processes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Task Completion Rate -->
+        <div class="content-card">
+            <h2>Task Completion Rate</h2>
+            <div class="screenshot-container" id="screenshot-task">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Task Completion Rate Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('task')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-task" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-task')">
+            </div>
+
+            <div class="target-badge">Target: 95-100%</div>
+
+            <div class="def-grid">
+                <div class="def-item">
+                    <strong>Completed</strong>
+                    <span>Tasks where the completed button was clicked</span>
+                </div>
+                <div class="def-item">
+                    <strong>Skipped</strong>
+                    <span>Tasks where the skip button was clicked</span>
+                </div>
+            </div>
+
+            <div class="callout warning">
+                <div class="callout-title">⚠️ Important Note</div>
+                <p>Some users may not know that the skip button even exists. This metric can lead to false data if your team does not know what this button is, or what it does.</p>
+            </div>
+        </div>
+
+        <!-- Process Architect Analysis -->
+        <div class="content-card">
+            <h2>💡 Analysis: Combining These Metrics</h2>
+            <p>Understanding how these two metrics relate to each other is key to diagnosing issues:</p>
+
+            <div class="callout info" style="margin-top: 1.5rem;">
+                <div class="callout-title">📊 Processes On Time = LOW + Task Completion = HIGH</div>
+                <p>Your team is likely doing the work required, but you need to <strong>adjust default due dates</strong>. They're completing tasks but running out of time on the overall process.</p>
+            </div>
+
+            <div class="callout info">
+                <div class="callout-title">📊 Processes On Time = HIGH + Task Completion = LOW</div>
+                <p>Your processes likely have tasks and stages that are <strong>not helpful or applicable</strong>, or not timed properly. Consider auditing which tasks are being skipped.</p>
+            </div>
+
+            <div class="callout warning">
+                <div class="callout-title">📊 Task Completion = 100%</div>
+                <p>Your team probably doesn't know the "skip" button exists, and may be <strong>completing tasks but not actually doing the work</strong>. Train your team on proper task handling.</p>
+            </div>
+
+            <div class="callout success">
+                <div class="callout-title">📊 Both Metrics = HIGH but still having issues?</div>
+                <p>You're dealing with a <strong>training issue</strong>, not a process issue. Your workflows are sound - focus on team enablement.</p>
+            </div>
+        </div>
+
+        <!-- First Response Time -->
+        <div class="content-card">
+            <h2>First Response Time</h2>
+            <div class="screenshot-container" id="screenshot-response">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>First Response Time Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('response')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-response" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-response')">
+            </div>
+
+            <div class="target-badge">Target: 2-4 hours</div>
+
+            <p>This is an important metric for inbox users to track team responsiveness across different communication channels.</p>
+
+            <div class="callout info">
+                <div class="callout-title">📝 Note</div>
+                <p>Non-inbox users will see email as the only metric displayed.</p>
+            </div>
+        </div>
+
+        <!-- Occupancy Rate -->
+        <div class="content-card">
+            <h2>Occupancy Rate</h2>
+            <div class="screenshot-container" id="screenshot-occupancy">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Occupancy Rate Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('occupancy')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-occupancy" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-occupancy')">
+            </div>
+
+            <p>This metric is a mirror of your Property Accounting System — this number can be influenced by Processes, but not directly impacted by them.</p>
+
+            <p>Use this as a high-level health indicator of your portfolio performance.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <a href="../index.html" class="btn btn-outline">← Back to Overview</a>
+            <a href="process-performance.html" class="btn btn-primary">Process Performance →</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">🌿</span>
+                <span>Process Architect</span>
+            </div>
+            <p>&copy; 2025 Process Architect. Built with care for property managers.</p>
+            <a href="mailto:Madeline@myprocessarchitect.com">Madeline@myprocessarchitect.com</a>
+        </div>
+    </footer>
+
+    <script src="../images.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

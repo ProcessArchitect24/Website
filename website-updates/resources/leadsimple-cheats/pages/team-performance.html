@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Performance | LeadSimple Dashboard Cheat Sheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🌿</span>
+                Process Architect
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="service-quality.html">Service Quality</a></li>
+                <li><a href="process-performance.html">Process Performance</a></li>
+                <li><a href="team-performance.html" class="active">Team Performance</a></li>
+                <li><a href="customer-service.html">Customer Service</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../index.html">Home</a>
+        <a href="service-quality.html">Service Quality</a>
+        <a href="process-performance.html">Process Performance</a>
+        <a href="team-performance.html">Team Performance</a>
+        <a href="customer-service.html">Customer Service</a>
+    </div>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>👥 Team Member Performance</h1>
+            <p>Evaluate individual team member metrics including tasks due, overdue, completion rates, and more to identify coaching opportunities.</p>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <!-- Overview Screenshot -->
+        <div class="content-card">
+            <h2>Dashboard Overview</h2>
+            <div class="screenshot-container" id="screenshot-team-overview">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Team Performance Overview Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('team-overview')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-team-overview" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-team-overview')">
+            </div>
+        </div>
+
+        <!-- Metrics Definitions -->
+        <div class="content-card">
+            <h2>Understanding the Metrics</h2>
+
+            <div class="def-grid">
+                <div class="def-item">
+                    <strong>Tasks Due</strong>
+                    <span>Tasks with a due-date of Today</span>
+                </div>
+                <div class="def-item">
+                    <strong>Tasks Overdue</strong>
+                    <span>Tasks with a due-date before today</span>
+                </div>
+                <div class="def-item">
+                    <strong>Future Tasks</strong>
+                    <span>Tasks with a due-date after today</span>
+                </div>
+                <div class="def-item">
+                    <strong>Task Completion</strong>
+                    <span>The % of tasks where the teammate hit "complete" (not "skip")</span>
+                </div>
+                <div class="def-item">
+                    <strong>Tasks Skipped</strong>
+                    <span>The % of tasks where the teammate hit "skip" (not "complete")</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Performance Screenshot -->
+        <div class="content-card">
+            <h2>Individual Team Member View</h2>
+            <div class="screenshot-container" id="screenshot-individual">
+                <div class="screenshot-placeholder">
+                    <span>📸</span>
+                    <p>Individual Team Member Performance Screenshot</p>
+                    <small>Drag & drop your screenshot here, or <button onclick="triggerUpload('individual')" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Upload Image</button></small>
+                </div>
+                <input type="file" id="upload-individual" accept="image/*" style="display: none;" onchange="handleImageUpload(this, 'screenshot-individual')">
+            </div>
+        </div>
+
+        <!-- Diagnostic Questions -->
+        <div class="content-card">
+            <h2>Diagnostic Questions</h2>
+            <p>When reviewing your Team Performance data, use these questions to identify issues:</p>
+
+            <div class="questions-box">
+                <h4>Questions to Ask:</h4>
+                <ul>
+                    <li>Which teammates have the most overdue tasks?</li>
+                    <li>Which teammates have the most future tasks?</li>
+                    <li>Which teammates have the highest % of tasks Skipped?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Special Note -->
+        <div class="content-card">
+            <h2>💡 Important Context</h2>
+
+            <div class="callout info">
+                <div class="callout-title">📝 Note About BDMs & Sales Staff</div>
+                <p>Your BDM or Sales-person will likely have a very high amount of future tasks, and skipped tasks.</p>
+                <p style="margin-top: 0.75rem;">While this can be avoided with process design, it's likely going to be a <strong>tension to manage</strong> rather than a problem to solve. Sales processes are inherently less linear and more dependent on external factors.</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">What High Skip Rates Can Indicate:</h3>
+            <ul>
+                <li><strong>Process issues:</strong> Tasks that aren't applicable to every situation</li>
+                <li><strong>Training gaps:</strong> Team members not understanding task purpose</li>
+                <li><strong>Workflow problems:</strong> Tasks that are redundant or poorly timed</li>
+                <li><strong>Role misalignment:</strong> Tasks assigned to wrong team members</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">What High Overdue Rates Can Indicate:</h3>
+            <ul>
+                <li><strong>Capacity issues:</strong> Too much work for the team member</li>
+                <li><strong>Prioritization problems:</strong> Unclear on what matters most</li>
+                <li><strong>Due date issues:</strong> Unrealistic timeframes set in processes</li>
+                <li><strong>External blockers:</strong> Waiting on others to complete their part</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <a href="process-performance.html" class="btn btn-outline">← Process Performance</a>
+            <a href="customer-service.html" class="btn btn-primary">Customer Service →</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">🌿</span>
+                <span>Process Architect</span>
+            </div>
+            <p>&copy; 2025 Process Architect. Built with care for property managers.</p>
+            <a href="mailto:Madeline@myprocessarchitect.com">Madeline@myprocessarchitect.com</a>
+        </div>
+    </footer>
+
+    <script src="../images.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
